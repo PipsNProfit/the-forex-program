@@ -37,7 +37,28 @@ const AUTH = {
   async login(email, password){
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if(error) return { ok:false, error: error.message };
+    AUTH.logLoginEvent(data.user.id); // fire-and-forget, don't block login on this
     return { ok:true, user:data.user };
+  },
+  async logLoginEvent(userId){
+    let ip = null, city = null, country = null;
+    try{
+      const res = await fetch("https://ipapi.co/json/");
+      if(res.ok){
+        const geo = await res.json();
+        ip = geo.ip || null;
+        city = geo.city || null;
+        country = geo.country_name || null;
+      }
+    } catch(e){ /* geolocation lookup is best-effort — skip silently if it fails */ }
+
+    await supabaseClient.from("login_events").insert({
+      user_id: userId,
+      ip_address: ip,
+      city,
+      country,
+      user_agent: navigator.userAgent
+    });
   },
   async logout(){
     await supabaseClient.auth.signOut();
