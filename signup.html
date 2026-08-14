@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up — THE FOREX PROGRAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="auth-shell">
+  <div class="auth-visual">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      <span>THE FOREX PROGRAM</span>
+    </a>
+    <div class="quote">
+      "Every candle tells you what buyers and sellers <span>just agreed on</span>. Learn to read that, and the rest follows."
+    </div>
+    <div class="who">— Lesson 04, Candlestick Basics</div>
+  </div>
+
+  <div class="auth-side">
+    <div class="auth-card fade-up">
+      <h2>Create your account</h2>
+      <p>Free, always. Track your progress across all 25 lessons.</p>
+
+      <div id="form-msg" class="form-msg"></div>
+
+      <form id="signup-form" novalidate>
+        <div class="field">
+          <label for="su-name">Full name</label>
+          <input type="text" id="su-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="su-email">Email</label>
+          <input type="email" id="su-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="su-password">Password</label>
+          <input type="password" id="su-password" name="password" autocomplete="new-password" minlength="6" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+
+      <div class="auth-switch">Already have an account? <a href="login.html">Log in</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/courses-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
